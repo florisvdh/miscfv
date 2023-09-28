@@ -2,6 +2,7 @@
 
 export(duplicated_packages)
 export(remove_duplicated_pkgs)
+export(user_packages)
 importFrom(dplyr,"%>%")
 importFrom(dplyr,arrange)
 importFrom(dplyr,count)
