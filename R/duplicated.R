@@ -52,7 +52,7 @@ format_as_deb <- function(pkgs) {
 #'
 #'
 #' @export
-remove_duplicated_pkgs <- function(keep = c("sf", "terra", "ragg", "svglite")) {
+remove_duplicated_pkgs <- function(keep = c("sf", "terra", "ragg", "svglite", "lwgeom")) {
   to_remove <-
     duplicated_packages(wide = FALSE) %>%
     filter(libpath == .libPaths()[1],
