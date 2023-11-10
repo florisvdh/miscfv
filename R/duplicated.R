@@ -37,10 +37,16 @@ user_packages <- function(libpath = .libPaths()[1], unique = TRUE, format_as_deb
     {if (unique) dplyr::anti_join(., duplicated_packages(), by = "package") else .}
 
   if (format_as_deb) {
-    paste0("r-cran-", pkgs$package) |> tolower() |> cat()
+    format_as_deb(pkgs$package)
   } else pkgs
 }
 
+#' Serialize R package vector to debian r-cran packages
+#'
+#' @export
+format_as_deb <- function(pkgs) {
+  paste0("r-cran-", pkgs) |> tolower() |> cat()
+}
 
 #' Remove duplicated packages from first element of .libPaths()
 #'
