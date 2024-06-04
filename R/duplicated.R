@@ -5,10 +5,11 @@ duplicated_packages <- function(wide = TRUE) {
   pkgs <-
     installed.packages() %>%
     as_tibble %>%
+    mutate(version = as.package_version(Version)) %>%
     select(
       package = Package,
       libpath = LibPath,
-      version = Version
+      version
     )
   pkgs_duplicated <-
     pkgs %>%
@@ -30,9 +31,10 @@ user_packages <- function(libpath = .libPaths()[1], unique = TRUE, format_as_deb
   pkgs <- installed.packages() %>%
     as_tibble %>%
     filter(LibPath == libpath) %>%
+    mutate(version = as.package_version(Version)) %>%
     select(
       package = Package,
-      version = Version
+      version
     ) %>%
     {if (unique) dplyr::anti_join(., duplicated_packages(), by = "package") else .}
 
