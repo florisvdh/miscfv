@@ -57,8 +57,12 @@ format_as_deb <- function(pkgs) {
 remove_duplicated_pkgs <- function(keep = c("sf", "terra", "ragg", "svglite", "lwgeom")) {
   to_remove <-
     duplicated_packages(wide = FALSE) %>%
-    filter(libpath == .libPaths()[1],
-           !(package %in% keep)) %>%
+    mutate(min_version = min(version), .by = package) %>%
+    filter(
+      libpath == .libPaths()[1],
+      !(package %in% keep),
+      version == min_version
+    ) %>%
     pull(package)
   if (length(to_remove) == 0L) {
     message("No packages to remove (taking into account the 'keep' argument).\n",
