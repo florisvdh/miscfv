@@ -66,8 +66,10 @@ remove_duplicated_pkgs <- function(
     ) %>%
     pull(package)
   if (length(to_remove) == 0L) {
-    message("No packages to remove (taking into account the 'keep' argument).\n",
-            "Use `duplicated_packages()` for more information.")
+    message(
+      "No packages to remove (taking into account the 'keep' argument).\n",
+      "Use `duplicated_packages()` for more information."
+    )
     return(invisible(NULL))
   }
   if (interactive()) {
@@ -75,7 +77,7 @@ remove_duplicated_pkgs <- function(
       "Will remove following duplicated packages from `",
       .libPaths()[1], "`: ",
       paste(to_remove, collapse = ", ")
-      )
+    )
     a <- readline("Do you wish to continue? (y/n) ")
     if (grepl("^[Yy]", a)) {
       remove.packages(to_remove, lib = .libPaths()[1])
