@@ -4,7 +4,9 @@
 \alias{remove_duplicated_pkgs}
 \title{Remove duplicated packages from first element of .libPaths()}
 \usage{
-remove_duplicated_pkgs(keep = c("sf", "terra", "ragg", "svglite", "lwgeom"))
+remove_duplicated_pkgs(
+  keep = c("sf", "terra", "ragg", "svglite", "lwgeom", "PROJ")
+)
 }
 \description{
 Remove duplicated packages from first element of .libPaths()
