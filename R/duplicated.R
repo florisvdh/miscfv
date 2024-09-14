@@ -54,7 +54,8 @@ format_as_deb <- function(pkgs) {
 #'
 #'
 #' @export
-remove_duplicated_pkgs <- function(keep = c("sf", "terra", "ragg", "svglite", "lwgeom")) {
+remove_duplicated_pkgs <- function(
+    keep = c("sf", "terra", "ragg", "svglite", "lwgeom", "PROJ")) {
   to_remove <-
     duplicated_packages(wide = FALSE) %>%
     mutate(min_version = min(version), .by = package) %>%
