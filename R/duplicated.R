@@ -1,5 +1,7 @@
 #' Enlist duplicated packages
 #'
+#' @importFrom utils installed.packages
+#'
 #' @export
 duplicated_packages <- function(wide = TRUE) {
   pkgs <-
@@ -52,6 +54,7 @@ format_as_deb <- function(pkgs) {
 
 #' Remove duplicated packages from first element of .libPaths()
 #'
+#' @importFrom utils remove.packages
 #'
 #' @export
 remove_duplicated_pkgs <- function(
